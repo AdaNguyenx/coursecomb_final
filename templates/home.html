@@ -1,0 +1,115 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> CourseComb </title>
+
+  <!-- JQuery  -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+  <!-- JQuery UI (for autocomplete) -->
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+  <!-- Avoid tooltip conflict between JQuery UI and Bootstrap -->
+  <script> $.widget.bridge('uitooltip', $.ui.tooltip); </script>
+
+  <!-- Bootstrap stylesheet CDN Version 4-->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+  <!-- Moment (for Calendar) -->
+  <script src="{% static 'moment.js' %}"></script>
+
+  <!-- FullCalendar -->
+  <link rel="stylesheet" type="text/css" href="{% static 'fullcalendar/fullcalendar.css' %}"/> 
+  <script src="{% static 'fullcalendar/fullcalendar.js' %}"></script>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+
+  <!-- Google Font Open Sans -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:100,400,400i,600,800" rel="stylesheet">
+
+  <!-- Main stylesheet CSS -->
+  <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}" />
+
+
+
+</head>
+
+<body>
+  {% include 'navbar.html' %}
+
+  <div class = "container-fluid">
+    <div class = "row">
+
+      <!-- FIRST COLUMN -->
+      {% include 'course-search.html' %}
+
+
+      <!-- SECOND COLUMN -->
+      <div class = "col-sm-4 col-md-2 col-lg-2" id="search-results">
+        <span class = "column-label"> <span class="combination_length">{{ combination_length }}</span> Possible Schedules Ranked by Preference:</span>
+        <p></p>
+        <div class = "combqueue" id="combqueue">
+          {% for i in combinations%}
+          {{ i | safe}}
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- THIRD COLUMN -->
+      <div class = "col-sm-6 col-md-8 col-lg-8 hidden">
+
+        <div class = "save-schedule-panel">
+
+          <!-- Instructions before clicking on combination -->
+          <div class = "calendar-holder">
+            <h id="welcome_title">Welcome to CourseComb! </h>
+
+            <div><img src = "{% static 'img/tiger.png' %}"></div>
+            <div class="message-content">
+              <p id="welcome_body"> 1. Enter ALL the courses that you are interested in taking and click Create My Schedule! </p>
+              <p id="welcome_body"> 2. Set your preferences. We will show you all the possible combinations of your selected courses in ranked order based on your preferences. </p>
+              <p id="welcome_body"> 3. Click on a combination and select your precepts. </p>
+              <p id="welcome_body"> 4. You can favorite your schedule and see them on the Favorites page. </p>
+              <p id="welcome_body"> Good luck on your semester! </p>
+            </div>
+        </div>
+
+      </div>
+
+        <div id="calendar-container">
+          <div id="calendar"></div>
+        </div>
+
+        <label for="precept-toggles">
+          <span class="column-label precept-show"></span>
+        </label>
+
+        <div id="selected-coursecomb" class="row">
+        </div>
+      </div>
+
+    </div>
+  </div>
+  
+
+  <script>
+   var csrfmiddlewaretoken = '{{ csrf_token }}';
+   var loading_img = '<img class="loading" src="{% static "img/loading.gif" %}"></img>';
+  </script>
+  <script type="text/javascript" src="{% static 'js/script.js' %}"></script>
+
+  <!-- Bootstrap Javascript -->
+  <scripttype="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+  
+</body>
+</html>

@@ -1,0 +1,25 @@
+<div class = "col-sm-2 col-md-2 col-lg-2" id="course-search">
+
+  <div class="ui-widget">
+    <label for="courses"></label>
+    <input id="courses" placeholder="Search Course Here...">
+  </div>
+
+  
+  <span class = "aftersearch"></span>
+
+  <div class = "column-label">Courses of Interest (<span class="queue_length">{{ queue_length }}</span>)</div>
+
+
+  <div class = "coursequeue">
+    {% for i in favorites%}
+    {{ i | safe}} 
+    {% endfor %}
+  </div>
+
+  <br>
+
+  <!-- FILTER --> 
+  {% include 'filter_button.html' %}
+
+</div>

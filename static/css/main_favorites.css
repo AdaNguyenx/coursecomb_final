@@ -1,0 +1,207 @@
+
+
+    body {
+    margin: 0;
+    text-align: center;
+    background-color: #FEFFFF;
+  }
+
+  .column-label {
+    font-size: 16.3px;
+    font-weight:600;
+    font-family: 'Open Sans', sans-serif;
+    color: rgb(51,58,86);
+  }
+
+  .navbar {
+    /*background: #ffb84d;*/
+    background: #3AAFA9;
+    font-weight: 500;
+  }
+
+  .navbar-brand {
+    color: white !important;
+  }
+
+  
+  .nav-link {
+    color:white !important;
+  }
+
+  .navbar-brand:hover {
+    padding-bottom: 3px;
+    border-bottom: 1px solid white;
+  }
+
+  .navbar-nav li > a:hover {
+    padding-bottom: 3px;
+    border-bottom: 1px solid white;
+  }
+
+  .container-fluid {
+    margin-top: 10px;
+  }
+
+  div#selected-coursecomb {
+    position: relative;
+    margin-bottom: 0;
+  }
+
+/*  #calendar {
+    font-size: 12px;
+    font-family: 'Open Sans', sans-serif;
+    margin-bottom: 5px;
+    height: 500px;
+  }
+*/
+  #calendar-container{
+    font-size: 12px;
+    font-family: 'Open Sans', sans-serif;
+    margin-bottom: 5px;
+    height: calc(100vh - 110px);
+    /* Height just right to avoid calendar overflow*/
+    max-height: 608px; 
+  }
+  .precept_render {
+    opacity: 0.5;
+  }
+
+  .selected_precept {
+    opacity: 1;
+  }
+
+  .selected_class {
+    opacity: 1;
+  }
+
+  #calendar .fc-today {
+    background-color: white !important;
+  }
+
+  #calendar .fc-content {
+    font: 12px;
+    font-family: 'Open Sans', sans-serif;
+  }
+
+  #calendar .fc-event {
+    /*box-shadow: 1px 1px 1px #706868;*/
+  }
+
+  #calendar .fc-agenda-axis, #calendar .fc-widget-header {
+    font-weight: normal;
+    padding: 3px;
+    border-radius: 3px;
+  }
+
+
+  .fa-arrow-alt-circle-right {
+    cursor: pointer;
+    font-size:20px;
+  }
+
+  /* Specific to favorites */
+  .favorite-list {
+    padding-top: 15px;
+    padding-left: 30px;
+  }
+
+  .close {
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 18px;
+  color: red;
+  text-shadow: 0 1px 0 #ffffff;
+  filter: alpha(opacity=20);
+  text-decoration: none;
+}
+.close:hover {
+  color: #000000;
+  text-decoration: none;
+  opacity: 0.4;
+  filter: alpha(opacity=40);
+  cursor: pointer;
+}
+
+.coursecomb {
+    cursor: pointer;
+    border: 1px solid rgb(23,37,42);
+    border-radius: 5px;
+    font-size: 13px;
+    font-family: 'Open Sans', sans-serif;
+    background-color: rgb(255, 255, 255);
+    padding: 10px 10px 10px 0;
+    margin-bottom: 10px;
+    /* added to enable text overflow*/
+    text-overflow: ellipsis;
+    width:30vw;
+    white-space:nowrap;
+    display:inline-block;
+    overflow:hidden;
+  }
+
+.container {
+  position: relative;
+  width: 100%;
+}
+.overlay {
+  position: absolute;
+  top:0;
+  bottom: 0;
+  left: 100%;
+  right: 0;
+  width: 0;
+  height: 100%;
+  overflow: hidden;
+  transition: .5s ease;
+  border-radius: 5px;
+  /*padding: 5% 0;*/
+  /*background-color: #fc636b;*/
+}
+
+.container:hover .overlay {
+  width: 100%;
+  left: 0;
+}
+
+.registrar {
+   float: left;
+   width: 33.33%; 
+   height:100%;
+   /*background-color: #ffb84d;
+   padding: 5% 0;*/
+}
+.reviews {
+   float: left;
+   width: 33.33%; 
+   height:100%;
+   /*background-color: lightgrey;
+   padding: 5% 0;*/
+}
+.deletebutton {
+  color:white;
+   float: right;
+   width: 20%; 
+   height:100%;
+   background-color: #fc636b;
+   padding-top:3%;
+   /*padding: 5% 0;*/
+}
+
+.deletebutton:hover {
+  color: black;
+}
+.row1:before, 
+.row1:after {
+    content:"";
+    display: table ;
+    clear:both;
+}
+.text {
+  margin-top:50%;
+}
+.fa, .fas {
+  opacity:0.5;
+}
+
+
+

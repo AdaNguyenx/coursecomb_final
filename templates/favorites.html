@@ -1,0 +1,94 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <title> CourseComb </title>
+
+  <!-- JQuery  -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+  <!-- Bootstrap stylesheet CDN Version 4-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+  <!-- JQuery UI (for autocomplete) -->
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+  <!-- Moment (for Calendar) -->
+  <script src="{% static 'moment.js' %}"></script>
+
+  <!-- FullCalendar -->
+  <link rel="stylesheet" type="text/css" href="{% static 'fullcalendar/fullcalendar.css' %}"/> 
+  <script src="{% static 'fullcalendar/fullcalendar.js' %}"></script>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+
+  <!-- Google Font Open Sans -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:100,400,400i,600,800" rel="stylesheet">
+
+  <!-- Main stylesheet CSS -->
+  <link rel="stylesheet" type="text/css" href="{% static 'css/main_favorites.css' %}" />
+
+<script>
+  $(function() {
+    $("#calendar").fullCalendar({
+      defaultView: 'agendaWeek',
+      header: false,
+      columnHeaderFormat: 'ddd',
+      minTime: '08:0:00',
+      maxTime: '23:00:00',
+        slotDuration: '00:30:00',
+        allDaySlot: false,
+        weekends: false,
+        // contentHeight: 'auto',
+        height: 'parent',
+        eventOverlap: false,
+        // aspectRatio: .5,
+        // slotMinutes: 30,
+        timeFromat: 'H:mm'
+        /*editable: true*/
+      })
+  });
+</script>
+
+</head>
+
+<body>
+  {% include 'navbar.html' %}
+
+  <div class = "row">
+    <div class = "col-md-4 favorite-list"> 
+      <span class = "column-label">Your Favorites</span>
+    </div>
+    <div class = "col-md-8 hidden"> 
+
+      <label for="schedule-calendar">
+        <span class = "column-label">Selected Schedule</span>
+      </label>
+      <div id="calendar-container">
+        <div id="calendar"> </div>
+      </div>
+    </div>
+
+  </div>
+
+ <script>
+   var csrfmiddlewaretoken = '{{ csrf_token }}';
+   var favorites = JSON.parse('{{ favorites | escapejs }}');
+  </script>
+  <script type="text/javascript" src="{% static 'js/script_favorites.js' %}"></script>
+
+  <!-- Bootstrap Javascript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
